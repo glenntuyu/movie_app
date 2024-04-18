@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import '../../../../core/domain/common/model/movie_model.dart';
+import '../../../../core/core.dart';
 import 'movie_item.dart';
 
 class MoviePagedList extends StatelessWidget {
   final OnMovieItemTap onTap;
+  final NavigationSource source;
   final PagingController<int, MovieModel> pagingController;
 
   const MoviePagedList({
     super.key,
     required this.onTap,
+    required this.source,
     required this.pagingController,
   });
 
@@ -25,14 +27,15 @@ class MoviePagedList extends StatelessWidget {
             return MovieItem(
               movie: movie,
               onTap: onTap,
+              source: source,
               width: double.infinity,
             );
           },
           newPageProgressIndicatorBuilder: (context) {
-            return _shimmer();
+            return _loadingWidget();
           },
           firstPageProgressIndicatorBuilder: (context) {
-            return _shimmer();
+            return _loadingWidget();
           },
         ),
         crossAxisCount: 2,
@@ -42,8 +45,7 @@ class MoviePagedList extends StatelessWidget {
     );
   }
 
-  Widget _shimmer() {
-    // TODO: fix shimmer
-    return const MovieItemShimmer();
+  Widget _loadingWidget() {
+    return const LoadingWidget();
   }
 }

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/core.dart';
 import '../../../../core/data/constant/url_constant.dart';
-import '../../../../core/domain/common/model/movie_model.dart';
-import '../../../../core/presentation/extension/extension.dart';
-import '../../../../core/presentation/widget/widget.dart';
 
-typedef OnMovieItemTap = Function(MovieModel post);
+typedef OnMovieItemTap = Function(MovieModel post, NavigationSource source);
 
 const double _width = 150, _imageHeight = 200;
 
 class MovieItem extends StatelessWidget {
   final MovieModel movie;
+  final NavigationSource source;
   final OnMovieItemTap onTap;
   final double? height;
   final double width;
@@ -19,6 +18,7 @@ class MovieItem extends StatelessWidget {
   const MovieItem({
     super.key,
     required this.movie,
+    required this.source,
     required this.onTap,
     this.height,
     this.width = _width,
@@ -27,7 +27,7 @@ class MovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTap(movie),
+      onTap: () => onTap(movie, source),
       borderRadius: BorderRadius.circular(16),
       child: SizedBox(
         width: width,

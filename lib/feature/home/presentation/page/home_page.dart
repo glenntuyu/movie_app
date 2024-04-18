@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import '../../../../config/router/app_router.dart';
 import '../../../../core/core.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
           MultiSliver(
             children: [
               const Gap(16),
-              ..._movies(),
+              ..._topRated(),
               const Gap(48),
             ],
           ),
@@ -127,12 +128,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  List<Widget> _movies() {
+  List<Widget> _topRated() {
     return [
       SliverToBoxAdapter(
         child: _sectionTitle('Star War Movies'),
       ),
       MoviePagedList(
+        source: NavigationSource.topRated,
         onTap: _navigateToDetail,
         pagingController: _pagingController,
       ),
@@ -151,8 +153,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _navigateToDetail(MovieModel post) {
-    // TODO: implement navigation
+  void _navigateToDetail(MovieModel post, NavigationSource source) {
+    context.router.push(
+      DetailRoute(
+        id: post.id,
+        title: post.title,
+        imageUrl: post.posterPath,
+        source: source.value,
+      ),
+    );
   }
 
   void _onBlocStateChange(HomeState state) {
