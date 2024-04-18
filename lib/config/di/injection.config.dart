@@ -23,12 +23,12 @@ import '../../feature/detail/domain/usecase/get_movie_detail_usecase.dart'
     as _i15;
 import '../../feature/detail/domain/usecase/usecase.dart' as _i18;
 import '../../feature/detail/presentation/cubit/detail_cubit.dart' as _i17;
+import '../../feature/feature.dart' as _i12;
 import '../../feature/home/data/datasource/datasource.dart' as _i9;
 import '../../feature/home/data/datasource/home_remote_datasource.dart' as _i4;
 import '../../feature/home/domain/repository/home_repository.dart' as _i8;
 import '../../feature/home/domain/usecase/get_top_rated_movies_use_case.dart'
     as _i10;
-import '../../feature/home/home.dart' as _i12;
 import '../../feature/home/presentation/cubit/home_cubit.dart' as _i11;
 import 'core.injection.dart' as _i19;
 

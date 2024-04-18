@@ -26,3 +26,21 @@ final class GetTopRatedMoviesError extends HomeState {
     required this.message,
   });
 }
+
+final class GetCinemaLoading extends HomeState {}
+
+final class GetCinemaLoaded extends HomeState {
+  final List<CinemaModel> cinemas;
+
+  const GetCinemaLoaded({
+    required this.cinemas,
+  });
+}
+
+final class GetCinemaError extends HomeState {
+  final String message;
+
+  const GetCinemaError({
+    required this.message,
+  });
+}

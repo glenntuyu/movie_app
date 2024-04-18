@@ -22,6 +22,7 @@ dependencies:
   gap: ^3.0.1
   get_it: ^7.6.7
   google_fonts: ^6.1.0
+  google_maps_flutter: ^2.6.1
   infinite_scroll_pagination:
     git:
       url: https://github.com/EdsonBueno/infinite_scroll_pagination.git

@@ -9,7 +9,9 @@ import '../../../../core/core.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../config/di/injection.dart';
+import '../../../../core/domain/common/model/cinema_model.dart';
 import '../cubit/home_cubit.dart';
+import '../widget/cinema_horizontal_list.dart';
 import '../widget/widget.dart';
 
 @RoutePage()
@@ -35,9 +37,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    _getInitialData();
     _listenPagingController();
 
     super.initState();
+  }
+
+  void _getInitialData() {
+    _getCinemas();
+  }
+
+  void _getCinemas() {
+    context.read<HomeCubit>().getCinemas();
   }
 
   void _listenPagingController() {
@@ -119,6 +130,8 @@ class _HomePageState extends State<HomePage> {
           MultiSliver(
             children: [
               const Gap(16),
+              _cinema(),
+              const Gap(24),
               ..._topRated(),
               const Gap(48),
             ],
@@ -128,10 +141,37 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _cinema() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _sectionTitle('Popular Movies'),
+        BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (previous, current) => _cinemaBuildWhen(current),
+          builder: (context, state) {
+            return CinemaHorizontalList(
+              onTap: _navigateToMaps,
+              cinemas: context.read<HomeCubit>().cinemas,
+            );
+          },
+        )
+      ],
+    );
+  }
+
+  bool _cinemaBuildWhen(HomeState current) =>
+      current is GetCinemaLoaded ||
+      current is GetCinemaLoading ||
+      current is GetCinemaError;
+
+  void _navigateToMaps(CinemaModel post) {
+    //TODO navigate to maps
+  }
+
   List<Widget> _topRated() {
     return [
       SliverToBoxAdapter(
-        child: _sectionTitle('Star War Movies'),
+        child: _sectionTitle('Top Rated Movies'),
       ),
       MoviePagedList(
         source: NavigationSource.topRated,

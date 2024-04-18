@@ -3,6 +3,9 @@
         android:label="movie_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCQFK-lXFd1soEuE5t0FJ7UfhIXzaPXklE" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
