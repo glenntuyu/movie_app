@@ -24,7 +24,7 @@ class MovieModel extends Equatable {
 
   
   @JsonKey(name: 'title')
-  final String? title;
+  final String title;
   
   @JsonKey(name: 'episode_id')
   final int episodeId;
