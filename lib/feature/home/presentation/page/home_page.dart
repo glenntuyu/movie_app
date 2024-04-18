@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
   AppBar _appBar() {
     return AppBar(
       title: Text(
-        'LaMov',
+        'Movie App',
         style: context.titleMedium?.copyWith(
           fontWeight: FontWeight.bold,
         ),
