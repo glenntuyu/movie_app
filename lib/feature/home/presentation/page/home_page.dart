@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:movie_app/core/core.dart';
+import '../../../../core/core.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../../config/di/injection.dart';
@@ -34,30 +34,21 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _getInitialData();
     _listenPagingController();
 
     super.initState();
   }
 
-  void _getInitialData() {
-    _getMovies();
-  }
-
-  void _getMovies() {
-    context.read<HomeCubit>().getMovies();
-  }
-
   void _listenPagingController() {
     _pagingController.addPageRequestListener((page) async {
-      _fetchTopRatedData(page: page);
+      _fetchMovies(page: page);
     });
   }
 
-  void _fetchTopRatedData({
+  void _fetchMovies({
     required int page,
   }) {
-    context.read<HomeCubit>().getMovies(page: page);
+    context.read<HomeCubit>().getMovies(page);
   }
 
   @override
@@ -127,7 +118,8 @@ class _HomePageState extends State<HomePage> {
           MultiSliver(
             children: [
               const Gap(16),
-              ..._topRated(),
+              ..._movies(),
+              const Gap(48),
             ],
           ),
         ],
@@ -135,7 +127,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  List<Widget> _topRated() {
+  List<Widget> _movies() {
     return [
       SliverToBoxAdapter(
         child: _sectionTitle('Star War Movies'),
@@ -165,13 +157,13 @@ class _HomePageState extends State<HomePage> {
 
   void _onBlocStateChange(HomeState state) {
     if (state is GetMoviesLoaded) {
-      _onTopRatedMoviesLoaded(state);
+      _onMoviesLoaded(state);
     } else if (state is GetMoviesError) {
       _showSnackbarError(state.message);
     }
   }
 
-  void _onTopRatedMoviesLoaded(GetMoviesLoaded state) {
+  void _onMoviesLoaded(GetMoviesLoaded state) {
     final isLastPage = state.movies.next.isNullOrEmpty;
 
     if (isLastPage) {

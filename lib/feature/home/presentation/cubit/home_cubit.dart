@@ -3,27 +3,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/domain/common/model/model.dart';
+import '../../domain/param/param.dart';
+import '../../home.dart';
 
 part 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  final GetMoviesUseCase _getMoviesUseCase;
+
+  HomeCubit(
+    this._getMoviesUseCase,
+  ) : super(HomeInitial());
 
   List<MovieModel>? movies;
 
-  // TODO: using real data
-  void getMovies({int page = -1}) async {
+ void getMovies(int page) async {
     emit(GetMoviesLoading());
 
-    await Future.delayed(const Duration(seconds: 3));
-    emit(GetMoviesLoaded(
-      movies: BaseModel(
-        count: 6,
-        next: null,
-        previous: null,
-        results: dummyMovies,
-      ),
-    ));
+    _getMoviesUseCase(GetMoviesPaginationParam(
+      page: page,
+    )).then((result) {
+      result.fold(
+        (failure) => emit(GetMoviesError(message: failure.message)),
+        (data) => emit(GetMoviesLoaded(movies: data)),
+      );
+    });
   }
 }

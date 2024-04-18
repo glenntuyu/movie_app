@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/core/core.dart';
+import '../../../core.dart';
 
 class BaseModel<T> extends Equatable {
   final int? count;
