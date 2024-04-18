@@ -41,14 +41,14 @@ class _HomePageState extends State<HomePage> {
 
   void _listenPagingController() {
     _pagingController.addPageRequestListener((page) async {
-      _fetchMovies(page: page);
+      _fetchTopRatedMovies(page: page);
     });
   }
 
-  void _fetchMovies({
+  void _fetchTopRatedMovies({
     required int page,
   }) {
-    context.read<HomeCubit>().getMovies(page);
+    context.read<HomeCubit>().getTopRatedMovies(page);
   }
 
   @override
@@ -156,25 +156,21 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onBlocStateChange(HomeState state) {
-    if (state is GetMoviesLoaded) {
+    if (state is GetTopRatedMoviesLoaded) {
       _onMoviesLoaded(state);
-    } else if (state is GetMoviesError) {
+    } else if (state is GetTopRatedMoviesError) {
       _showSnackbarError(state.message);
     }
   }
 
-  void _onMoviesLoaded(GetMoviesLoaded state) {
-    final isLastPage = state.movies.next.isNullOrEmpty;
+  void _onMoviesLoaded(GetTopRatedMoviesLoaded state) {
+    final isLastPage = state.movies.page == state.movies.totalPages;
 
     if (isLastPage) {
       _pagingController.appendLastPage(state.movies.results);
     } else {
-      int? nextPage = state.movies.getNextPage();
-
-      if (nextPage != null) {
-        final nextPageKey = nextPage + 1;
-        _pagingController.appendPage(state.movies.results, nextPageKey);
-      }
+      final nextPageKey = (state.movies.page ?? 0) + 1;
+      _pagingController.appendPage(state.movies.results, nextPageKey);
     }
   }
 

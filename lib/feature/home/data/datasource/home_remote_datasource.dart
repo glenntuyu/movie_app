@@ -5,7 +5,7 @@ import '../../../../core/domain/common/model/model.dart';
 import '../../domain/param/param.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<BaseModel<MovieModel>> getMovies(GetMoviesPaginationParam param);
+  Future<BaseModel<MovieModel>> getTopRatedMovies(GetMoviesPaginationParam param);
 }
 
 @LazySingleton(as: HomeRemoteDataSource)
@@ -17,9 +17,9 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   });
 
   @override
-  Future<BaseModel<MovieModel>> getMovies(GetMoviesPaginationParam param) {
+  Future<BaseModel<MovieModel>> getTopRatedMovies(GetMoviesPaginationParam param) {
     return client.get(
-      ApiConstant.films,
+      ApiConstant.movieTopRated,
       queryParameters: {
         'page': param.page,
       },

@@ -9,20 +9,20 @@ sealed class HomeState extends Equatable {
 
 final class HomeInitial extends HomeState {}
 
-final class GetMoviesLoading extends HomeState {}
+final class GetTopRatedMoviesLoading extends HomeState {}
 
-final class GetMoviesLoaded extends HomeState {
+final class GetTopRatedMoviesLoaded extends HomeState {
   final BaseModel<MovieModel> movies;
 
-  const GetMoviesLoaded({
+  const GetTopRatedMoviesLoaded({
     required this.movies,
   });
 }
 
-final class GetMoviesError extends HomeState {
+final class GetTopRatedMoviesError extends HomeState {
   final String message;
 
-  const GetMoviesError({
+  const GetTopRatedMoviesError({
     required this.message,
   });
 }

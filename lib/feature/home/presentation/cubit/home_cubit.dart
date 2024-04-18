@@ -10,7 +10,7 @@ part 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
-  final GetMoviesUseCase _getMoviesUseCase;
+  final GetTopRatedMoviesUseCase _getMoviesUseCase;
 
   HomeCubit(
     this._getMoviesUseCase,
@@ -18,15 +18,15 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<MovieModel>? movies;
 
- void getMovies(int page) async {
-    emit(GetMoviesLoading());
+ void getTopRatedMovies(int page) async {
+    emit(GetTopRatedMoviesLoading());
 
     _getMoviesUseCase(GetMoviesPaginationParam(
       page: page,
     )).then((result) {
       result.fold(
-        (failure) => emit(GetMoviesError(message: failure.message)),
-        (data) => emit(GetMoviesLoaded(movies: data)),
+        (failure) => emit(GetTopRatedMoviesError(message: failure.message)),
+        (data) => emit(GetTopRatedMoviesLoaded(movies: data)),
       );
     });
   }

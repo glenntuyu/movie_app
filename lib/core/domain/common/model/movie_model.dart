@@ -6,64 +6,54 @@ part 'movie_model.g.dart';
 @JsonSerializable()
 class MovieModel extends Equatable {
   const MovieModel({
-    required this.title,
-    required this.episodeId,
-    required this.openingCrawl,
-    required this.director,
-    required this.producer,
+    required this.adult,
+    required this.backdropPath,
+    required this.genreIds,
+    required this.id,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
     required this.releaseDate,
-    required this.characters,
-    required this.planets,
-    required this.starships,
-    required this.vehicles,
-    required this.species,
-    required this.created,
-    required this.edited,
-    required this.url,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
   
-  @JsonKey(name: 'title')
-  final String title;
-  
-  @JsonKey(name: 'episode_id')
-  final int episodeId;
-  
-  @JsonKey(name: 'opening_crawl')
-  final String? openingCrawl;
-  
-  @JsonKey(name: 'director')
-  final String? director;
-  
-  @JsonKey(name: 'producer')
-  final String? producer;
-  
+  final bool adult;
+
+  @JsonKey(name: 'backdrop_path')
+  final String? backdropPath;
+
+  @JsonKey(name: 'genre_ids')
+  final List<int> genreIds;
+
+  final int id;
+
+  @JsonKey(name: 'original_title')
+  final String originalTitle;
+
+  final String overview;
+
+  final double popularity;
+
+  @JsonKey(name: 'poster_path')
+  final String? posterPath;
+
   @JsonKey(name: 'release_date')
   final String? releaseDate;
 
-  @JsonKey(name: 'characters')
-  final List<String> characters;
+  final String title;
 
-  @JsonKey(name: 'planets')
-  final List<String> planets;
-
-  @JsonKey(name: 'starships')
-  final List<String> starships;
-
-  @JsonKey(name: 'vehicles')
-  final List<String> vehicles;
-
-  @JsonKey(name: 'species')
-  final List<String> species;
+  final bool video;
   
-  @JsonKey(name: 'created')
-  final String? created;
-  
-  @JsonKey(name: 'edited')
-  final String? edited;
-  
-  @JsonKey(name: 'url')
-  final String? url;
+  @JsonKey(name: 'vote_average')
+  final double voteAverage;
+
+  @JsonKey(name: 'vote_count')
+  final int voteCount;
 
   factory MovieModel.fromJson(Map<String, dynamic> json) =>
       _$MovieModelFromJson(json);
@@ -72,19 +62,18 @@ class MovieModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        title,
-        episodeId,
-        openingCrawl,
-        director,
-        producer,
+        adult,
+        backdropPath,
+        genreIds,
+        id,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
         releaseDate,
-        characters,
-        planets,
-        starships,
-        vehicles,
-        species,
-        created,
-        edited,
-        url,
+        title,
+        video,
+        voteAverage,
+        voteCount,
       ];
 }

@@ -9,15 +9,15 @@ import '../param/get_movies_pagination_param.dart';
 import '../repository/home_repository.dart';
 
 @lazySingleton
-class GetMoviesUseCase
+class GetTopRatedMoviesUseCase
     implements UseCase<BaseModel<MovieModel>, GetMoviesPaginationParam> {
   final HomeRepository repository;
 
-  const GetMoviesUseCase(this.repository);
+  const GetTopRatedMoviesUseCase(this.repository);
 
   @override
   Future<Either<Failure, BaseModel<MovieModel>>> call(
       GetMoviesPaginationParam param) {
-    return repository.getMovies(param);
+    return repository.getTopRatedMovies(param);
   }
 }

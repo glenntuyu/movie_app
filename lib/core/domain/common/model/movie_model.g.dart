@@ -7,42 +7,35 @@ part of 'movie_model.dart';
 // **************************************************************************
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
-      title: json['title'] as String,
-      episodeId: json['episode_id'] as int,
-      openingCrawl: json['opening_crawl'] as String?,
-      director: json['director'] as String?,
-      producer: json['producer'] as String?,
+      adult: json['adult'] as bool,
+      backdropPath: json['backdrop_path'] as String?,
+      genreIds:
+          (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
+      id: json['id'] as int,
+      originalTitle: json['original_title'] as String,
+      overview: json['overview'] as String,
+      popularity: (json['popularity'] as num).toDouble(),
+      posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] as String?,
-      characters: (json['characters'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      planets:
-          (json['planets'] as List<dynamic>).map((e) => e as String).toList(),
-      starships:
-          (json['starships'] as List<dynamic>).map((e) => e as String).toList(),
-      vehicles:
-          (json['vehicles'] as List<dynamic>).map((e) => e as String).toList(),
-      species:
-          (json['species'] as List<dynamic>).map((e) => e as String).toList(),
-      created: json['created'] as String?,
-      edited: json['edited'] as String?,
-      url: json['url'] as String?,
+      title: json['title'] as String,
+      video: json['video'] as bool,
+      voteAverage: (json['vote_average'] as num).toDouble(),
+      voteCount: json['vote_count'] as int,
     );
 
 Map<String, dynamic> _$MovieModelToJson(MovieModel instance) =>
     <String, dynamic>{
-      'title': instance.title,
-      'episode_id': instance.episodeId,
-      'opening_crawl': instance.openingCrawl,
-      'director': instance.director,
-      'producer': instance.producer,
+      'adult': instance.adult,
+      'backdrop_path': instance.backdropPath,
+      'genre_ids': instance.genreIds,
+      'id': instance.id,
+      'original_title': instance.originalTitle,
+      'overview': instance.overview,
+      'popularity': instance.popularity,
+      'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,
-      'characters': instance.characters,
-      'planets': instance.planets,
-      'starships': instance.starships,
-      'vehicles': instance.vehicles,
-      'species': instance.species,
-      'created': instance.created,
-      'edited': instance.edited,
-      'url': instance.url,
+      'title': instance.title,
+      'video': instance.video,
+      'vote_average': instance.voteAverage,
+      'vote_count': instance.voteCount,
     };

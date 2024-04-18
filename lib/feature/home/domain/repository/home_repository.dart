@@ -7,7 +7,7 @@ import '../../data/datasource/datasource.dart';
 import '../param/param.dart';
 
 abstract class HomeRepository {
-  Future<Either<Failure, BaseModel<MovieModel>>> getMovies(GetMoviesPaginationParam param,);
+  Future<Either<Failure, BaseModel<MovieModel>>> getTopRatedMovies(GetMoviesPaginationParam param,);
 }
 
 @LazySingleton(as: HomeRepository)
@@ -19,10 +19,10 @@ class HomeRepositoryImpl implements HomeRepository {
   });
 
   @override
-  Future<Either<Failure, BaseModel<MovieModel>>> getMovies(GetMoviesPaginationParam param,) {
+  Future<Either<Failure, BaseModel<MovieModel>>> getTopRatedMovies(GetMoviesPaginationParam param,) {
     return RepositoryUtil.catchOrThrow(
       body: () async {
-        final response = await remoteDataSource.getMovies(param,);
+        final response = await remoteDataSource.getTopRatedMovies(param,);
         return response;
       },
     );

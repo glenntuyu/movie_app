@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/data/constant/url_constant.dart';
 import '../../../../core/domain/common/model/movie_model.dart';
 import '../../../../core/presentation/extension/extension.dart';
 import '../../../../core/presentation/widget/widget.dart';
@@ -44,7 +45,7 @@ class MovieItem extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: ImageNetwork(
-            movie.url ?? '',
+            movie.posterPath?.w500Image ?? '',
             fit: BoxFit.cover,
             width: width,
             height: _imageHeight,
