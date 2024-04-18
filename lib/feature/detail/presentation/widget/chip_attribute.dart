@@ -6,12 +6,14 @@ class ChipAttribute extends StatelessWidget {
   final String name;
   final Icon? icon;
   final VoidCallback? onTap;
+  final TextStyle? style;
 
   const ChipAttribute(
     this.name, {
     super.key,
     this.icon,
-    this.onTap,
+    this.onTap, 
+    this.style,
   });
 
   @override
@@ -37,7 +39,7 @@ class ChipAttribute extends StatelessWidget {
               ],
               Text(
                 name,
-                style: context.labelMedium?.copyWith(
+                style: style?.copyWith(
                   color: Colors.white,
                 ),
               ),

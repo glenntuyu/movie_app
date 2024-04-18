@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../config/di/injection.dart';
@@ -147,14 +148,17 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _runtime(MovieModel movie) => ChipAttribute('${movie.runtime} Min');
 
-  Widget _review(MovieModel movie) => ChipAttribute(
-        '${movie.voteAverage.ceilToDouble().toString()} (See Reviews)',
+  Widget _review(MovieModel movie) {
+    var formatter = NumberFormat("###.#", "en_US");
+    return ChipAttribute(
+        '${formatter.format(movie.voteAverage)} (See Reviews)',
         icon: const Icon(
           Icons.star,
           color: Colors.yellow,
           size: 16,
         ),
       );
+  }
 
   Padding _overview(String overview) {
     return Padding(
