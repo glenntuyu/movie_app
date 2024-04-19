@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../feature/detail/presentation/page/page.dart';
 import '../../feature/home/presentation/page/home_page.dart';
-import '../../feature/maps/presentation/page/maps_page.dart';
+import '../../feature/maps/presentation/page/map_detail_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -21,7 +21,7 @@ class AppRouter extends _$AppRouter {
           path: '/movie/:id',
         ),
         AutoRoute(
-          page: MapsRoute.page,
+          page: MapDetailRoute.page,
           path: '/maps/:lat/:long',
         ),
       ];

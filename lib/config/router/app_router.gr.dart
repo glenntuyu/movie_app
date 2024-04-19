@@ -43,11 +43,11 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const HomePage()),
       );
     },
-    MapsRoute.name: (routeData) {
+    MapDetailRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final queryParams = routeData.queryParams;
-      final args = routeData.argsAs<MapsRouteArgs>(
-          orElse: () => MapsRouteArgs(
+      final args = routeData.argsAs<MapDetailRouteArgs>(
+          orElse: () => MapDetailRouteArgs(
                 lat: pathParams.getDouble('lat'),
                 long: pathParams.getDouble('long'),
                 title: queryParams.optString('title'),
@@ -55,7 +55,7 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: WrappedRoute(
-            child: MapsPage(
+            child: MapDetailPage(
           key: args.key,
           lat: args.lat,
           long: args.long,
@@ -139,17 +139,17 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [MapsPage]
-class MapsRoute extends PageRouteInfo<MapsRouteArgs> {
-  MapsRoute({
+/// [MapDetailPage]
+class MapDetailRoute extends PageRouteInfo<MapDetailRouteArgs> {
+  MapDetailRoute({
     Key? key,
     required double lat,
     required double long,
     String? title,
     List<PageRouteInfo>? children,
   }) : super(
-          MapsRoute.name,
-          args: MapsRouteArgs(
+          MapDetailRoute.name,
+          args: MapDetailRouteArgs(
             key: key,
             lat: lat,
             long: long,
@@ -163,13 +163,14 @@ class MapsRoute extends PageRouteInfo<MapsRouteArgs> {
           initialChildren: children,
         );
 
-  static const String name = 'MapsRoute';
+  static const String name = 'MapDetailRoute';
 
-  static const PageInfo<MapsRouteArgs> page = PageInfo<MapsRouteArgs>(name);
+  static const PageInfo<MapDetailRouteArgs> page =
+      PageInfo<MapDetailRouteArgs>(name);
 }
 
-class MapsRouteArgs {
-  const MapsRouteArgs({
+class MapDetailRouteArgs {
+  const MapDetailRouteArgs({
     this.key,
     required this.lat,
     required this.long,
@@ -186,6 +187,6 @@ class MapsRouteArgs {
 
   @override
   String toString() {
-    return 'MapsRouteArgs{key: $key, lat: $lat, long: $long, title: $title}';
+    return 'MapDetailRouteArgs{key: $key, lat: $lat, long: $long, title: $title}';
   }
 }

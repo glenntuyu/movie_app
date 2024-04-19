@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
 
   void _navigateToMaps(CinemaModel post) {
     context.router.push(
-      MapsRoute(
+      MapDetailRoute(
         lat: post.lat,
         long: post.long,
         title: post.name,

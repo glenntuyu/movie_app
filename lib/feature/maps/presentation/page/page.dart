@@ -1,1 +1,1 @@
-export 'maps_page.dart';
+export 'map_detail_page.dart';

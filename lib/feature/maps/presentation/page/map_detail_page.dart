@@ -5,14 +5,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../config/config.dart';
 import '../../../../core/core.dart';
-import '../cubit/maps_cubit.dart';
+import '../cubit/map_detail_cubit.dart';
 
 @RoutePage()
-class MapsPage extends StatefulWidget implements AutoRouteWrapper {
+class MapDetailPage extends StatefulWidget implements AutoRouteWrapper {
   final double lat, long;
   final String? title;
 
-  const MapsPage({
+  const MapDetailPage({
     super.key,
     @PathParam('lat') required this.lat,
     @PathParam('long') required this.long,
@@ -20,18 +20,18 @@ class MapsPage extends StatefulWidget implements AutoRouteWrapper {
   });
 
   @override
-  State<MapsPage> createState() => _MapsPageState();
+  State<MapDetailPage> createState() => _MapDetailPageState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<MapsCubit>(),
+      value: getIt<MapDetailCubit>(),
       child: this,
     );
   }
 }
 
-class _MapsPageState extends State<MapsPage> {
+class _MapDetailPageState extends State<MapDetailPage> {
    @override
   void initState() {
     super.initState();
