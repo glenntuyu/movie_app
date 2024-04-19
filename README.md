@@ -36,3 +36,8 @@ Create a separation of concern between layers into presentation, domain, and dat
 
 4. **Lottie Animation**
    - Enhances user interface with Lottie animations for a visually appealing experience.
+
+### Notes
+   - ETA is still mockked because the Google API Key doesn't have permission to use Distance Matrix API.
+   - ETA is still hidden from view because of UI issue.
+   - Reminder still doesn't work.

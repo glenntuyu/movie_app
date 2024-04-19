@@ -30,8 +30,8 @@ import '../../feature/home/domain/usecase/get_top_rated_movies_use_case.dart'
     as _i12;
 import '../../feature/home/home.dart' as _i14;
 import '../../feature/home/presentation/cubit/home_cubit.dart' as _i13;
-import '../../feature/maps/presentation/cubit/map_detail_cubit.dart' as _i3;
-import '../../feature/maps/presentation/cubit/maps_cubit.dart' as _i4;
+import '../../feature/maps/presentation/cubit/map_detail_cubit.dart' as _i4;
+import '../../feature/maps/presentation/cubit/maps_cubit.dart' as _i3;
 import 'core.injection.dart' as _i21;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -46,8 +46,8 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     final coreInjectionModule = _$CoreInjectionModule();
-    gh.factory<_i3.MapDetailCubit>(() => _i3.MapDetailCubit());
-    gh.factory<_i4.MapsCubit>(() => _i4.MapsCubit());
+    gh.factory<_i3.MapsCubit>(() => _i3.MapsCubit());
+    gh.factory<_i4.MapDetailCubit>(() => _i4.MapDetailCubit());
     gh.lazySingleton<_i5.ApiClient>(() => coreInjectionModule.apiClient);
     gh.lazySingleton<_i6.HomeRemoteDataSource>(
         () => _i6.HomeRemoteDataSourceImpl(client: gh<_i7.ApiClient>()));

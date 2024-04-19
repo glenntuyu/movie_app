@@ -3,12 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/domain/common/model/distance_matrix_model.dart';
+
 part 'map_detail_state.dart';
 
 @injectable
 class MapDetailCubit extends Cubit<MapDetailState> {
 
   MapDetailCubit() : super(MapDetailInitial());
+
+  DistanceMatrixModel? distanceMatrixModel;
 
   void getLocation() async {
     emit(GetMapDetailLoading());
@@ -45,5 +49,14 @@ class MapDetailCubit extends Cubit<MapDetailState> {
       return Future.error('Location services permission is permanently denied');
     }
     return true;
+  }
+  
+  void getEta() async {
+    emit(GetMapEtaLoading());
+
+    await Future.delayed(const Duration(seconds: 2));
+    distanceMatrixModel = dummyDistanceMatrix;
+
+    emit(GetMapEtaLoaded(distanceMatrixModel: distanceMatrixModel!));
   }
 }
