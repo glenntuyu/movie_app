@@ -7,21 +7,16 @@ sealed class MapDetailState extends Equatable {
   List<Object> get props => [];
 }
 
-final class MapsInitial extends MapDetailState {}
+final class MapDetailInitial extends MapDetailState {}
 
-final class GetMapsLoading extends MapDetailState {}
+final class GetMapDetailLoading extends MapDetailState {}
 
-final class GetMapsLoaded extends MapDetailState {
-  final List<MapsDataView> maps;
+final class GetMapDetailLoaded extends MapDetailState {}
 
-  const GetMapsLoaded({
-    required this.maps,
-  });}
-
-final class GetMapsError extends MapDetailState {
+final class GetMapDetailError extends MapDetailState {
   final String message;
 
-  const GetMapsError({
+  const GetMapDetailError({
     required this.message,
   });
 }

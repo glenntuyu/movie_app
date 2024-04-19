@@ -69,7 +69,7 @@ class _MapDetailPageState extends State<MapDetailPage> {
         Marker(
           markerId: MarkerId(widget.title ?? ''),
           position: LatLng(widget.lat, widget.long),
-          draggable: true,
+          infoWindow: InfoWindow(title: widget.title ?? ''),
         ),
       },
     );

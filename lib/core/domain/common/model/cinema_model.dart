@@ -64,9 +64,9 @@ const dummyCinemas = [
     long: 107.60890027370743,
   ),
   CinemaModel(
-    name: 'CGV MIM',
+    name: 'CGV Kings',
     url : '/a1fo3bps2zt5hEQspmC7UMGtuVl.jpg',
-    lat: -6.942843340300149,
-    long: 107.65846483859968,
+    lat: -6.922858132454244, 
+    long: 107.60498066087331,
   ),
 ];

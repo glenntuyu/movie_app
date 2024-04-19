@@ -145,12 +145,12 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _sectionTitle('Cinemas'),
+        _cinemaSectionTitle(),
         BlocBuilder<HomeCubit, HomeState>(
           buildWhen: (previous, current) => _cinemaBuildWhen(current),
           builder: (context, state) {
             return CinemaHorizontalList(
-              onTap: _navigateToMaps,
+              onTap: _navigateToMapDetail,
               cinemas: context.read<HomeCubit>().cinemas,
             );
           },
@@ -159,12 +159,53 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _cinemaSectionTitle() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Wrap(
+        alignment: WrapAlignment.start,
+        crossAxisAlignment: WrapCrossAlignment.start,
+        direction: Axis.horizontal,
+        runSpacing: 8,
+        spacing: 8,
+        children: [
+          _sectionTitle('Cinemas'),
+          _locateCinemasTitle()
+        ],
+      ),
+    );
+  }
+
+  Widget _locateCinemasTitle() {
+    return InkWell(
+      onTap: () {
+        _navigateToMaps();
+      },
+      child: Container(
+        padding: const EdgeInsets.only(top: 8),
+        child: Text(
+          '(Locate All)',
+          style: context.bodySmall?.copyWith(
+            color: Colors.lightBlue,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _navigateToMaps() {
+    context.router.push(
+      const MapsRoute(),
+    );
+  }
+
   bool _cinemaBuildWhen(HomeState current) =>
       current is GetCinemaLoaded ||
       current is GetCinemaLoading ||
       current is GetCinemaError;
 
-  void _navigateToMaps(CinemaModel post) {
+  void _navigateToMapDetail(CinemaModel post) {
     context.router.push(
       MapDetailRoute(
         lat: post.lat,

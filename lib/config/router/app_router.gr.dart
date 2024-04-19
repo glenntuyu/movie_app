@@ -63,6 +63,12 @@ abstract class _$AppRouter extends RootStackRouter {
         )),
       );
     },
+    MapsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const MapsPage()),
+      );
+    },
   };
 }
 
@@ -189,4 +195,18 @@ class MapDetailRouteArgs {
   String toString() {
     return 'MapDetailRouteArgs{key: $key, lat: $lat, long: $long, title: $title}';
   }
+}
+
+/// generated route for
+/// [MapsPage]
+class MapsRoute extends PageRouteInfo<void> {
+  const MapsRoute({List<PageRouteInfo>? children})
+      : super(
+          MapsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MapsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
