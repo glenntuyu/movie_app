@@ -11,7 +11,13 @@ final class MapDetailInitial extends MapDetailState {}
 
 final class GetMapDetailLoading extends MapDetailState {}
 
-final class GetMapDetailLoaded extends MapDetailState {}
+final class GetMapDetailLoaded extends MapDetailState {
+  final Position position;
+
+  const GetMapDetailLoaded({
+    required this.position,
+  });
+}
 
 final class GetMapDetailError extends MapDetailState {
   final String message;
