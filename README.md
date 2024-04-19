@@ -24,15 +24,15 @@ Movie App is an application developed using Flutter that provides a Movie Databa
 
 1. **Clean Architecture**
 Create a separation of concern between layers into presentation, domain, and data for a modular and scalable codebase.
-- **Presentation Layer**: Contains UI components and presentation logic.
-- **Domain Layer**: Defines use cases and business logic independent of UI.
-- **Data Layer**: Manages data sources, repositories, and external services.
+   - **Presentation Layer**: Contains UI components and presentation logic.
+   - **Domain Layer**: Defines use cases and business logic independent of UI.
+   - **Data Layer**: Manages data sources, repositories, and external services.
 
 2. **Bloc**
-- A state management that helps to separate presentation layer from business logic.
+   - A state management that helps to separate presentation layer from business logic.
 
 3. **Isolate for JSON Parsing**
-- Efficiently parses JSON data using isolates for better performance.
+   - Efficiently parses JSON data using isolates for better performance.
 
 4. **Lottie Animation**
-- Enhances user interface with Lottie animations for a visually appealing experience.
+   - Enhances user interface with Lottie animations for a visually appealing experience.
