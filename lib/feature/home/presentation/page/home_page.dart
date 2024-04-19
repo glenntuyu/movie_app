@@ -37,10 +37,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    _initNotificationService();
     _getInitialData();
     _listenPagingController();
 
     super.initState();
+  }
+
+  void _initNotificationService() {
+    NotificationService().initNotification();
   }
 
   void _getInitialData() {
@@ -109,7 +114,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _createReminder() {
-    
+    NotificationService()
+        .showNotification(1, 'Reminder Example', 'This is a reminder');
   }
 
   Widget _profileAvatar() {
