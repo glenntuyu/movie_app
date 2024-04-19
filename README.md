@@ -1,16 +1,38 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+Movie App is an application developed using Flutter that provides a Movie Database App designed using Clean Architecture principles. It contains features such as home screen with infinite scrolling showing Top Rated Movies and a list of Cinema (Mockk), movie detail information with Youtube trailer, map location for each Cinema with current Location, map location for all cinema, and reminder notification.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+1. **Home Page**
+   - Displays list of Cinema. (Data is Mockked)
+   - Displays list of Top Rated Movies. (Infinite Scroll)
+   - Reminder Notification Button.
 
-A few resources to get you started if this is your first Flutter project:
+2. **Movie Details**
+   - Provides detailed information about a selected movie.
+   - Includes an embedded YouTube trailer for preview.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Cinema Location**
+   - Provide a map that shows Cinema location and current location.
+   - Shows ETA from current location to Cinema location. (WIP: Development will use Distance Matrix API from Google API)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. **All Cinema Location**
+   - Shows all Cinema location at once.
+
+## Tech Stacks
+
+1. **Clean Architecture**
+Create a separation of concern between layers into presentation, domain, and data for a modular and scalable codebase.
+- **Presentation Layer**: Contains UI components and presentation logic.
+- **Domain Layer**: Defines use cases and business logic independent of UI.
+- **Data Layer**: Manages data sources, repositories, and external services.
+
+2. **Bloc**
+- A state management that helps to separate presentation layer from business logic.
+
+3. **Isolate for JSON Parsing**
+- Efficiently parses JSON data using isolates for better performance.
+
+4. **Lottie Animation**
+- Enhances user interface with Lottie animations for a visually appealing experience.
