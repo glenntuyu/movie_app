@@ -94,15 +94,22 @@ class _HomePageState extends State<HomePage> {
       height: 26,
       width: 26,
       margin: const EdgeInsets.only(right: 16),
-      child: SvgPicture.asset(
-        'assets/icon/notification.svg',
-        fit: BoxFit.fitWidth,
-        colorFilter: const ColorFilter.mode(
-          Colors.white,
-          BlendMode.srcIn,
+      child: InkWell(
+        onTap: _createReminder,
+        child: SvgPicture.asset(
+          'assets/icon/notification.svg',
+          fit: BoxFit.fitWidth,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
         ),
       ),
     );
+  }
+
+  void _createReminder() {
+    
   }
 
   Widget _profileAvatar() {
