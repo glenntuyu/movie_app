@@ -43,6 +43,26 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const HomePage()),
       );
     },
+    MapsRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<MapsRouteArgs>(
+          orElse: () => MapsRouteArgs(
+                lat: pathParams.getDouble('lat'),
+                long: pathParams.getDouble('long'),
+                title: queryParams.optString('title'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(
+            child: MapsPage(
+          key: args.key,
+          lat: args.lat,
+          long: args.long,
+          title: args.title,
+        )),
+      );
+    },
   };
 }
 
@@ -116,4 +136,56 @@ class HomeRoute extends PageRouteInfo<void> {
   static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MapsPage]
+class MapsRoute extends PageRouteInfo<MapsRouteArgs> {
+  MapsRoute({
+    Key? key,
+    required double lat,
+    required double long,
+    String? title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapsRoute.name,
+          args: MapsRouteArgs(
+            key: key,
+            lat: lat,
+            long: long,
+            title: title,
+          ),
+          rawPathParams: {
+            'lat': lat,
+            'long': long,
+          },
+          rawQueryParams: {'title': title},
+          initialChildren: children,
+        );
+
+  static const String name = 'MapsRoute';
+
+  static const PageInfo<MapsRouteArgs> page = PageInfo<MapsRouteArgs>(name);
+}
+
+class MapsRouteArgs {
+  const MapsRouteArgs({
+    this.key,
+    required this.lat,
+    required this.long,
+    this.title,
+  });
+
+  final Key? key;
+
+  final double lat;
+
+  final double long;
+
+  final String? title;
+
+  @override
+  String toString() {
+    return 'MapsRouteArgs{key: $key, lat: $lat, long: $long, title: $title}';
+  }
 }

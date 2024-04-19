@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _sectionTitle('Popular Movies'),
+        _sectionTitle('Cinemas'),
         BlocBuilder<HomeCubit, HomeState>(
           buildWhen: (previous, current) => _cinemaBuildWhen(current),
           builder: (context, state) {
@@ -165,7 +165,13 @@ class _HomePageState extends State<HomePage> {
       current is GetCinemaError;
 
   void _navigateToMaps(CinemaModel post) {
-    //TODO navigate to maps
+    context.router.push(
+      MapsRoute(
+        lat: post.lat,
+        long: post.long,
+        title: post.name,
+      ),
+    );
   }
 
   List<Widget> _topRated() {

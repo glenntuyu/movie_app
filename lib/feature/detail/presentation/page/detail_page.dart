@@ -12,7 +12,6 @@ import '../../../../core/domain/common/model/model.dart';
 import '../../../../core/domain/common/model/movie_credits_casts_model.dart';
 import '../../../../core/domain/common/model/movie_video_model.dart';
 import '../../../../core/presentation/extension/extension.dart';
-import '../../../../core/presentation/widget/loading_widget.dart';
 import '../../../../core/presentation/widget/widget.dart';
 import '../cubit/cubit.dart';
 import '../widget/actor_widget.dart';
